@@ -1,0 +1,275 @@
+/* 最小化窗口 */
+.mini_Player_container
+{
+  position: fixed;
+  right: 5px;
+  bottom: 66px;
+  background-color: #9887b4;
+  z-index: 99999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.mini_music_poster
+{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  margin: -25px 0 0 -25px;
+  border-radius: 50%;
+  animation: rotatePoster 10s linear infinite;
+}
+/* 最大化 */
+.normal_player_container
+{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 99999999;
+  display: flex;
+  flex-flow: column;
+  background-color: #000;
+}
+.musicPlay_big_container_bg
+{
+  position: absolute;
+  left: -5px;
+  right: -5px;
+  top: -5px;
+  bottom: -5px;
+  z-index: 1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: .9;
+}
+
+.musicPlay_big_container_bg_blur
+{
+  position: absolute;
+  left: -5px;
+  right: -5px;
+  top: -5px;
+  bottom: -5px;
+  z-index: 2;
+  display: block;
+  content: '';
+  background-position: center;
+  background-image: url("/static/imgs/lxsx_poster.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(20px);
+}
+.musicPlay_title
+{
+  flex: 0 0 60px;
+  display: flex;
+  flex-flow: nowrap;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  z-index: 4;
+  background-image:linear-gradient(to bottom,rgba(0,0,0,.3),rgba(0,0,0,0));
+}
+.music_title_left
+{
+  flex: 0 0 60px;
+  height: 60px;
+  text-align: center;
+}
+.music_title_left .mu-icon
+{
+  line-height: 60px;
+  color: #ffffff;
+  font-size: 40px;
+}
+.music_title_right
+{
+  flex: 0 0 60px;
+  height: 60px;
+}
+.musicPlay_title_center
+{
+  flex: 1 1 100%;
+  height: 60px;
+}
+.music_name
+{
+  font-size: 16px;
+  text-align: center;
+  font-weight: normal;
+  color: #ffffff;
+  margin: 10px 0 0;
+  line-height: 20px;
+}
+.music_desc
+{
+  text-align: center;
+  font-size: 12px;
+  color: #ffffff;
+  line-height: 20px;
+  margin: 5px 0 0;
+}
+.music_content_container
+{
+  position: relative;
+  flex: 1 1 100%;
+}
+.music_poster_container
+{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  width: 80%;
+  height: 300px;
+  border-radius: 50%;
+  margin: -150px 0 0 -150px;
+  background-color: rgba(0,0,0,.5);
+  animation: rotatePoster 10s linear infinite;
+}
+.music_poster
+{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  transform: translate(-50%,-50%);
+}
+.music_poster_container.pause
+{
+  animation-play-state: paused;
+}
+@keyframes rotatePoster{
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.control_container
+{
+  flex: 0 0 80px;
+  width: 100%;
+  position: relative;
+  z-index: 4;
+}
+.music_time-line
+{
+  display: flex;
+  flex-flow: nowrap;
+}
+.current-time,
+.duration-time
+{
+  font-size: 12px;
+  color: #fff;
+}
+.current-time
+{
+  text-align: center;
+  flex: 0 0 60px;
+}
+.duration-time
+{
+  text-align: center;
+  flex: 0 0 60px;
+}
+
+.progress-bar
+{
+  position: relative;
+  flex: 1 1 100%;
+  padding: 0 10px;
+}
+.progress-bg
+{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 2px;
+  width: 100%;
+  border-radius: 20px;
+  background-color: rgba(255,255,255,.5);
+}
+.progress_played
+{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: #7e57c2;
+  border-radius: 20px;
+}
+.progress_touch_ball
+{
+  position: absolute;
+  left: 100%;
+  top: 0;
+  height: 20px;
+  width: 20px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.progress_touch_ball::after
+{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: block;
+  content: '';
+  width: 3px;
+  height: 3px;
+  background-color: #7e57c2;
+  border-radius: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.operators_container
+{
+  display: flex;
+  flex-flow: nowrap;
+  margin-top: 10px;
+  height: 40px;
+}
+.operators_center,
+.operators_left,
+.operators_right
+{
+  flex: 1 1 100%;
+}
+.operators_center
+{
+  text-align: center;
+}
+.operators_left{
+  text-align: right;
+}
+.operators_right
+{
+  text-align: left;
+}
+
+.operators_left .mu-icon,
+.operators_right .mu-icon,
+.operators_center .mu-icon
+{
+  font-size: 40px;
+  color: #ffffff;
+}
+
+

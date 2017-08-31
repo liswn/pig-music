@@ -19,18 +19,24 @@
     </mu-list>
     <mu-list>
       <mu-divider shallowInset/>
-      <mu-sub-header >我的歌单</mu-sub-header>
+      <mu-sub-header >我创建的歌单 (2)</mu-sub-header>
       <mu-divider shallowInset/>
-      <mu-list-item title="我喜欢的音乐" describeText="10000首">
+      <mu-list-item title="我喜欢的音乐" describeText="10000首" to="/myMusic/songlist/1">
         <mu-avatar src="https://img3.doubanio.com/icon/ul148010139-2.jpg" slot="leftAvatar"/>
       </mu-list-item>
-      <mu-list-item title="精品歌单倾心推荐，给最懂音乐的你" describeText="101">
+      <mu-list-item title="精品歌单倾心推荐，给最懂音乐的你" describeText="101首" to="/myMusic/songlist/2">
         <mu-avatar src="https://img3.doubanio.com/icon/ul148010139-2.jpg" slot="leftAvatar"/>
       </mu-list-item>
     </mu-list>
   </div>
 </template>
 <script>
+  export default {
+    data () {
+      return {
+      }
+    }
+  }
 </script>
 <style>
 </style>

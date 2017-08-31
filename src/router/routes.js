@@ -10,13 +10,18 @@ export default [
       },
       {
         path: '/myMusic',
-        name: '',
+        name: 'myMusic',
         component: (resolve) => require(['../views/MyMusic/page.vue'], resolve)
       },
       {
         path: '/friends',
-        name: '',
+        name: 'friends',
         component: (resolve) => require(['../views/Friends/page.vue'], resolve)
+      },
+      {
+        path: '/myMusic/songlist/:id',
+        name: 'songlist',
+        component: (resolve) => require(['../views/SongList/page.vue'], resolve)
       }
     ]
   }

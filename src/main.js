@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Vuex from 'vuex'
+import store from './store' // vuex
 import 'vue-awesome/icons/flag'
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
@@ -20,14 +20,9 @@ Vue.use(MuseUI)
 // 字体图标
 Vue.component('icon', Icon)
 
-// Vuex 进行状态管理
-Vue.use(Vuex)
-
 // vueg 转场动画
 const vuegOptions = {
-  forwardAnim: 'fadeInRight',
-  backAnim: 'fadeInLeft',
-  duration: 0.1,
+  duration: 0.3,
   shadow: false
 }
 Vue.use(vueg, router, vuegOptions)
@@ -42,6 +37,7 @@ if ('addEventListener' in document) {
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

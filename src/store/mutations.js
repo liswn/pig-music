@@ -6,6 +6,12 @@ const mutations = {
   },
   [types.SET_FULL_SCREEN] (state, flag) {
     state.fullScreen = flag
+  },
+  [types.SET_CURRENT_SONG_INDEX] (state, flag) {
+    state.currentSongIndex = flag
+  },
+  [types.SET_CURRENT_TIME_AUTO] (state, flag) {
+    state.currentTimeAuto = flag
   }
 }
 export default mutations

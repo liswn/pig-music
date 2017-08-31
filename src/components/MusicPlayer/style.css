@@ -2,24 +2,74 @@
 .mini_Player_container
 {
   position: fixed;
-  right: 5px;
-  bottom: 66px;
-  background-color: #9887b4;
+  left: 0;
+  right: 0px;
+  bottom: 0px;
+  background-color: #fff;
   z-index: 99999;
-  width: 60px;
+  display: flex;
+  flex-flow: nowrap;
   height: 60px;
-  border-radius: 50%;
+  overflow: hidden;
+}
+.mini_music_poster_container
+{
+  flex: 0 0 60px;
 }
 .mini_music_poster
 {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: 5px;
+  top: 5px;
   width: 50px;
   height: 50px;
-  margin: -25px 0 0 -25px;
   border-radius: 50%;
+  z-index: 4;
   animation: rotatePoster 10s linear infinite;
+}
+.mini_music_poster.pause
+{
+  animation-play-state: paused;
+}
+.mini_music_center
+{
+  flex: 1 1 100%;
+  padding: 0 10px;
+}
+.mini_music_name
+{
+  font-size: 14px;
+  height: 20px;
+  line-height: 20px;
+  font-weight: normal;
+  margin: 10px 0 0;
+  color: #333;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mini_music_desc
+{
+  font-size: 12px;
+  font-weight: normal;
+  margin: 5px 0 0;
+  color: #999999;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mini_music_playing
+{
+  flex: 0 0 50px;
+  text-align: center;
+}
+.mini_music_playing .mu-icon
+{
+  font-size: 40px;
+  line-height: 60px;
+  color: #7e57c2;
 }
 /* 最大化 */
 .normal_player_container
@@ -28,10 +78,11 @@
   left: 0;
   right: 0;
   top: 0;
-  bottom: 0;
+  height: 100%;
   z-index: 99999999;
   display: flex;
   flex-flow: column;
+  overflow: hidden;
   background-color: #000;
 }
 .musicPlay_big_container_bg
@@ -59,7 +110,6 @@
   display: block;
   content: '';
   background-position: center;
-  background-image: url("/static/imgs/lxsx_poster.png");
   background-repeat: no-repeat;
   background-size: cover;
   filter: blur(20px);
@@ -129,7 +179,13 @@
   border-radius: 50%;
   margin: -150px 0 0 -150px;
   background-color: rgba(0,0,0,.5);
+}
+.music_poster_container.play{
   animation: rotatePoster 10s linear infinite;
+}
+.music_poster_container.pause
+{
+  animation-play-state: paused;
 }
 .music_poster
 {
@@ -140,10 +196,6 @@
   height: 70%;
   border-radius: 50%;
   transform: translate(-50%,-50%);
-}
-.music_poster_container.pause
-{
-  animation-play-state: paused;
 }
 @keyframes rotatePoster{
   0% {
@@ -159,7 +211,7 @@
 
 .control_container
 {
-  flex: 0 0 80px;
+  flex: 0 0 100px;
   width: 100%;
   position: relative;
   z-index: 4;
@@ -174,6 +226,7 @@
 {
   font-size: 12px;
   color: #fff;
+  line-height: 30px;
 }
 .current-time
 {
@@ -190,53 +243,7 @@
 {
   position: relative;
   flex: 1 1 100%;
-  padding: 0 10px;
-}
-.progress-bg
-{
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  height: 2px;
-  width: 100%;
-  border-radius: 20px;
-  background-color: rgba(255,255,255,.5);
-}
-.progress_played
-{
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  background-color: #7e57c2;
-  border-radius: 20px;
-}
-.progress_touch_ball
-{
-  position: absolute;
-  left: 100%;
-  top: 0;
-  height: 20px;
-  width: 20px;
-  border: 1px solid #ddd;
-  background-color: #fff;
-  border-radius: 50%;
-  transform: translate(-50%,-50%);
-}
-
-.progress_touch_ball::after
-{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  display: block;
-  content: '';
-  width: 3px;
-  height: 3px;
-  background-color: #7e57c2;
-  border-radius: 50%;
-  transform: translate(-50%,-50%);
+  box-sizing: border-box;
 }
 
 .operators_container
@@ -272,4 +279,10 @@
   color: #ffffff;
 }
 
-
+.normalPlayerShow-enter-active, .normalPlayerShow-leave-active {
+  transition: all .3s cubic-bezier(.60, .1, .35, .80)
+}
+.normalPlayerShow-enter, .normalPlayerShow-leave-to /* .fade-leave-active 在低于版本 2.1.8 中 */ {
+  opacity: 0;
+  top: 100%;
+}

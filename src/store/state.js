@@ -1,3 +1,4 @@
+import songList from '../data/songList'
 // 播放模式
 const playMode = {
   sequence: 0, // 顺序播放
@@ -9,11 +10,14 @@ const state = {
   // 播放器状态
   playing: false,
   // 播放器全屏模式
-  fullScreen: true,
+  fullScreen: false,
   // 播放模式
   mode: playMode.sequence,
-  // 当前歌曲
-  currentSong: ''
+  // 播放列表
+  playlist: songList,
+  // 当前歌曲索引
+  currentSongIndex: 0,
+  currentTimeAuto: true
 }
 
 export default state

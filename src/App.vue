@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" style="">
     <router-view></router-view>
     <music-player></music-player>
   </div>
@@ -12,3 +12,8 @@
     }
   }
 </script>
+<style>
+  #app{
+    height: 100%
+  }
+</style>

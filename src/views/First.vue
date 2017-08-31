@@ -3,12 +3,14 @@
       <div class="view_container">
         <router-view></router-view>
       </div>
-      <mu-bottom-nav :value="bottomNav" shift @change="handleChange" style="position: fixed;bottom: 0">
-        <mu-bottom-nav-item value="" title="发现音乐" icon="hearing" to="/"/>
-        <mu-bottom-nav-item value="myMusic" title="我的音乐" icon="music_note" to="/myMusic"/>
-        <mu-bottom-nav-item value="friends" title="朋友" icon="supervisor_account" to="/friends"/>
-        <mu-bottom-nav-item value="myself" title="自己" icon="accessibility"/>
-      </mu-bottom-nav>
+      <div style="position: fixed;top: 0;width: 100%">
+        <mu-bottom-nav :value="bottomNav" shift @change="handleChange">
+          <mu-bottom-nav-item value="" title="发现音乐" icon="hearing" to="/"/>
+          <mu-bottom-nav-item value="myMusic" title="我的音乐" icon="music_note" to="/myMusic"/>
+          <mu-bottom-nav-item value="friends" title="朋友" icon="supervisor_account" to="/friends"/>
+          <mu-bottom-nav-item value="myself" title="自己" icon="accessibility"/>
+        </mu-bottom-nav>
+      </div>
     </div>
 </template>
 <script>
@@ -42,9 +44,7 @@
 <style scoped>
   .view_container
   {
-    height: 100%;
-    overflow: scroll;
+    padding-top: 66px;
     padding-bottom: 66px;
-    -webkit-overflow-scrolling: touch;
   }
 </style>

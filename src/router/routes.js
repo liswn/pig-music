@@ -11,7 +11,7 @@ export default [
       {
         path: '/myMusic',
         name: 'myMusic',
-        component: (resolve) => require(['../views/MyMusic/page.vue'], resolve)
+        component: (resolve) => require(['../views/SongList/page.vue'], resolve)
       },
       {
         path: '/friends',

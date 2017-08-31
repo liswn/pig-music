@@ -1,26 +1,37 @@
 <template>
     <div>
       <mu-list>
-        <mu-list-item title="理想三旬" describeText="陈哄宇 - 浓烟下的诗歌电台" shallowInset>
-          <mu-icon value="more_horiz" slot="right"/>
-        </mu-list-item>
-        <mu-divider shallowInset/>
-        <mu-list-item title="数字人生" describeText="林子祥 - 最爱" shallowInset>
-          <mu-icon value="more_horiz" slot="right"/>
-        </mu-list-item>
-        <mu-divider shallowInset/>
-        <mu-list-item title="十分十二寸" describeText="林子祥 - 十分十二寸" shallowInset>
-          <mu-icon value="more_horiz" slot="right"/>
-        </mu-list-item>
-        <mu-divider shallowInset/>
+        <template v-for="(item, index) in songList">
+          <mu-list-item :title="item.name" :describeText="item.singer + '-' + item.album" shallowInset @click="playSong(index)">
+            <mu-icon value="more_horiz" slot="right"/>
+          </mu-list-item>
+          <mu-divider shallowInset/>
+        </template>
       </mu-list>
     </div>
 </template>
 <script>
+  import { mapMutations } from 'vuex'
+  import songList from '../../data/songList'
   export default {
     data () {
       return {
+        songList: songList
       }
+    },
+    methods: {
+      ...mapMutations({
+        setPlayingState: 'SET_PLAYING_STATE',
+        setFullScreen: 'SET_FULL_SCREEN',
+        setCurrentIndex: 'SET_CURRENT_SONG_INDEX'
+      }),
+      playSong (index) {
+        this.setPlayingState(true)
+        this.setFullScreen(true)
+        this.setCurrentIndex(index)
+      }
+    },
+    computed: {
     }
   }
 </script>

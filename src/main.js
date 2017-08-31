@@ -8,8 +8,6 @@ import 'vue-awesome/icons/flag'
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
 import FastClick from 'fastclick'
-import vueg from 'vueg'
-import 'vueg/css/transition-min.css'
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 
@@ -19,13 +17,6 @@ Vue.config.productionTip = false
 Vue.use(MuseUI)
 // 字体图标
 Vue.component('icon', Icon)
-
-// vueg 转场动画
-const vuegOptions = {
-  duration: 0.3,
-  shadow: false
-}
-Vue.use(vueg, router, vuegOptions)
 
 /* 解决手机端300ms点击延迟 */
 if ('addEventListener' in document) {

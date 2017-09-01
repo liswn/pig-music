@@ -5,9 +5,9 @@
             <div class="musicPlay_big_container_bg" :style="{'background-image': 'url('+currentSong.poster+')'}">
               <div class="musicPlay_big_container_bg_blur"  :style="{'background-image': 'url('+currentSong.poster+')'}"></div>
             </div>
-            <div class="musicPlay_title">
-              <div class="music_title_left" @click="closeFullScreen">
-                <mu-icon value="chevron_left"/>
+            <div class="musicPlay_title" @click="closeFullScreen">
+              <div class="music_title_left">
+                <mu-icon value="reply"/>
               </div>
               <div class="musicPlay_title_center">
                 <h1 class="music_name">{{currentSong.name}}</h1>
@@ -62,6 +62,7 @@
       </div>
 
       <audio ref="audioRef"
+             @loadeddata="loadeddata"
              @timeupdate="timeupdate"
              @ended="ended"
              :src="currentSong.src"
@@ -69,7 +70,7 @@
     </div>
 </template>
 <script>
-  import { mapGetters, mapMutations } from 'vuex'
+  import { mapGetters, mapMutations, mapState } from 'vuex'
   import MySongProgress from '../MySongProgress/page.vue'
   import MyProgressCircle from '../MyProgressCircle/page.vue'
 
@@ -80,12 +81,21 @@
     },
     data () {
       return {
-        currentTime: 0,
-        durationTime: 0
+        currentTime: 0
       }
     },
     computed: {
-      ...mapGetters(['fullScreen', 'playing', 'playlist', 'currentSong', 'currentSongIndex', 'mode', 'currentTimeAuto'])
+      ...mapState('player', {
+        playing: state => state.playing
+      }),
+      ...mapGetters({
+        fullScreen: 'player/fullScreen',
+        playlist: 'player/playlist',
+        currentSong: 'player/currentSong',
+        currentSongIndex: 'player/currentSongIndex',
+        mode: 'player/mode',
+        currentTimeAuto: 'player/currentTimeAuto'
+      })
     },
     filters: {
       timeFormat (value) {
@@ -100,10 +110,15 @@
     },
     methods: {
       ...mapMutations({
-        setPlayingState: 'SET_PLAYING_STATE',
-        setFullScreen: 'SET_FULL_SCREEN',
-        setCurrentSongIndex: 'SET_CURRENT_SONG_INDEX'
+        setPlayingState: 'player/SET_PLAYING_STATE',
+        setFullScreen: 'player/SET_FULL_SCREEN',
+        setCurrentSongIndex: 'player/SET_CURRENT_SONG_INDEX'
       }),
+      loadeddata (e) {
+        const that = this
+        const audio = that.$refs.audioRef
+        that.currentSong.duration = audio.duration
+      },
       timeupdate (e) {
         if (this.currentTimeAuto) {
           this.currentTime = e.target.currentTime
@@ -122,7 +137,6 @@
       ended () {
         if (this.mode === 1) {
           // 单曲循环模式
-          this.loopSong()
         } else {
           this.nextSong()
         }

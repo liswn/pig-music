@@ -37,7 +37,7 @@
     },
     methods: {
       ...mapMutations({
-        setCurrentTimeAuto: 'SET_CURRENT_TIME_AUTO'
+        setCurrentTimeAuto: 'player/SET_CURRENT_TIME_AUTO'
       }),
       // 点击进度条改变播放进度
       progressClick (e) {

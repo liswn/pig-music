@@ -1,9 +1,15 @@
 <template>
     <div>
-      发现音乐
+      歌手
     </div>
 </template>
 <script>
+  export default {
+    data () {
+      return {
+      }
+    }
+  }
 </script>
 <style>
 </style>

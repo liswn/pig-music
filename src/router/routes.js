@@ -14,9 +14,9 @@ export default [
         component: (resolve) => require(['../views/SongList/page.vue'], resolve)
       },
       {
-        path: '/friends',
-        name: 'friends',
-        component: (resolve) => require(['../views/Friends/page.vue'], resolve)
+        path: '/songer',
+        name: 'songer',
+        component: (resolve) => require(['../views/Songer/page.vue'], resolve)
       },
       {
         path: '/myMusic/songlist/:id',

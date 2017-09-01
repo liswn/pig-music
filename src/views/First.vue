@@ -1,13 +1,14 @@
 <template>
     <div>
-      <div class="view_container">
+      <div
+        class="view_container">
         <router-view></router-view>
       </div>
-      <div style="position: fixed;top: 0;width: 100%">
+      <div style="position: fixed;top: 0;width: 100%;max-width: 375px">
         <mu-bottom-nav :value="bottomNav" shift @change="handleChange">
           <mu-bottom-nav-item value="" title="发现音乐" icon="hearing" to="/"/>
           <mu-bottom-nav-item value="myMusic" title="我的音乐" icon="music_note" to="/myMusic"/>
-          <mu-bottom-nav-item value="friends" title="朋友" icon="supervisor_account" to="/friends"/>
+          <mu-bottom-nav-item value="songer" title="歌手" icon="supervisor_account" to="/songer"/>
           <mu-bottom-nav-item value="myself" title="自己" icon="accessibility"/>
         </mu-bottom-nav>
       </div>

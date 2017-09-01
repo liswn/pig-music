@@ -1,3 +1,4 @@
+
 export const playing = state => state.playing
 
 export const fullScreen = state => state.fullScreen
@@ -11,3 +12,4 @@ export const currentSong = (state) => state.playlist[state.currentSongIndex] || 
 export const mode = (state) => state.mode
 
 export const currentTimeAuto = (state) => state.currentTimeAuto
+

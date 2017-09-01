@@ -14,6 +14,10 @@
 </script>
 <style>
   #app{
-    height: 100%
+    height: 100%;
+    width: 375px;
+    margin: 0 auto;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 </style>

@@ -11,6 +11,7 @@
   flex-flow: nowrap;
   height: 60px;
   overflow: hidden;
+  max-width: 375px;
 }
 .mini_music_poster_container
 {
@@ -84,6 +85,7 @@
   flex-flow: column;
   overflow: hidden;
   background-color: #000;
+  max-width: 375px;
 }
 .musicPlay_big_container_bg
 {
@@ -120,7 +122,6 @@
   display: flex;
   flex-flow: nowrap;
   width: 100%;
-  border-bottom: 1px solid #eee;
   z-index: 4;
   background-image:linear-gradient(to bottom,rgba(0,0,0,.3),rgba(0,0,0,0));
 }
@@ -134,7 +135,7 @@
 {
   line-height: 60px;
   color: #ffffff;
-  font-size: 40px;
+  font-size: 30px;
 }
 .music_title_right
 {

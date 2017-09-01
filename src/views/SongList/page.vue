@@ -2,8 +2,16 @@
     <div>
       <mu-list>
         <template v-for="(item, index) in songList">
-          <mu-list-item :title="item.name" :describeText="item.singer + '-' + item.album" shallowInset @click="playSong(index)">
-            <mu-icon value="more_horiz" slot="right"/>
+          <mu-list-item shallowInset>
+            <mu-icon v-show="item.id === currentSong.id" value="volume_up" slot="left" color="#7e57c2" @click="playSong(index)"/>
+            <mu-avatar v-show="item.id !== currentSong.id" color="#999" :style="{'margin-left': '-8px'}" backgroundColor="transparent" slot="leftAvatar" @click="playSong(index)">{{index + 1}}</mu-avatar>
+            <div slot="title" @click="playSong(index)">{{item.name}}</div>
+            <div slot="describe" @click="playSong(index)">{{item.singer}} - {{item.album}}</div>
+            <mu-icon-menu icon="more_horiz" slot="right">
+              <mu-menu-item title="播放" @click="playSong(index)" />
+              <mu-menu-item title="收藏" />
+              <mu-menu-item title="删除" />
+            </mu-icon-menu>
           </mu-list-item>
           <mu-divider shallowInset/>
         </template>
@@ -11,7 +19,7 @@
     </div>
 </template>
 <script>
-  import { mapMutations } from 'vuex'
+  import { mapMutations, mapGetters } from 'vuex'
   import songList from '../../data/songList'
   export default {
     data () {
@@ -21,9 +29,9 @@
     },
     methods: {
       ...mapMutations({
-        setPlayingState: 'SET_PLAYING_STATE',
-        setFullScreen: 'SET_FULL_SCREEN',
-        setCurrentIndex: 'SET_CURRENT_SONG_INDEX'
+        setPlayingState: 'player/SET_PLAYING_STATE',
+        setFullScreen: 'player/SET_FULL_SCREEN',
+        setCurrentIndex: 'player/SET_CURRENT_SONG_INDEX'
       }),
       playSong (index) {
         this.setPlayingState(true)
@@ -32,6 +40,14 @@
       }
     },
     computed: {
+      ...mapGetters({
+        'currentSong': 'player/currentSong'
+      })
+    },
+    watch: {
+      currentSong () {
+        console.log(this.currentSong.id)
+      }
     }
   }
 </script>

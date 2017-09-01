@@ -73,7 +73,7 @@
 /* 最大化 */
 .normal_player_container
 {
-  position: fixed;
+  position: absolute;
   top: 0;
   height: 100%;
   z-index: 99999999;
@@ -281,5 +281,5 @@
 }
 .normalPlayerShow-enter, .normalPlayerShow-leave-to /* .fade-leave-active 在低于版本 2.1.8 中 */ {
   opacity: 0;
-  top: 100%;
+  transform: translateY(100%);
 }

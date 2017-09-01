@@ -10,7 +10,7 @@ body
   top: 0;
   font: 400 14px/22px Arial,"Microsoft YaHei";
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-color: #f3f3f3;
+  background-color: #eee;
   height: 100%;
 }
 html, body {

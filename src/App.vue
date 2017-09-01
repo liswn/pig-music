@@ -18,6 +18,7 @@
     width: 375px;
     margin: 0 auto;
     overflow: scroll;
+    background-color: #fff;
     -webkit-overflow-scrolling: touch;
   }
 </style>

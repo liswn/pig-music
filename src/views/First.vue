@@ -4,7 +4,7 @@
         class="view_container">
         <router-view></router-view>
       </div>
-      <div style="position: fixed;top: 0;width: 100%;max-width: 375px">
+      <div style="position: fixed;top: 0;width: 100%;width: 375px">
         <mu-bottom-nav :value="bottomNav" shift @change="handleChange">
           <mu-bottom-nav-item value="" title="发现音乐" icon="hearing" to="/"/>
           <mu-bottom-nav-item value="myMusic" title="我的音乐" icon="music_note" to="/myMusic"/>

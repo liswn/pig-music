@@ -2,17 +2,14 @@
 .mini_Player_container
 {
   position: fixed;
-  left: 50%;
-  right: 0px;
   bottom: 0px;
   background-color: #fff;
   z-index: 99999;
   display: flex;
   flex-flow: nowrap;
   height: 60px;
+  width: 375px;
   overflow: hidden;
-  max-width: 375px;
-  transform: translateX(-50%);
 }
 .mini_music_poster_container
 {
@@ -77,17 +74,14 @@
 .normal_player_container
 {
   position: fixed;
-  left: 50%;
-  right: 0;
   top: 0;
   height: 100%;
   z-index: 99999999;
   display: flex;
   flex-flow: column;
   overflow: hidden;
+  width: 375px;
   background-color: #000;
-  max-width: 375px;
-  transform: translateX(-50%);
 }
 .musicPlay_big_container_bg
 {

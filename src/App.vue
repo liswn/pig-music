@@ -2,8 +2,8 @@
   <div id="app">
     <div class="top">
       <div class="top_nav">
-        <mu-bottom-nav :value="bottomNav" shift @change="handleChange" shift>
-          <mu-bottom-nav-item value="" title="发现音乐" icon="hearing" to="/" exact/>
+        <mu-bottom-nav :value="bottomNav" shift>
+          <mu-bottom-nav-item value="discover" title="发现音乐" icon="hearing" to="/" exact/>
           <mu-bottom-nav-item value="myMusic" title="我的音乐" icon="music_note" to="/myMusic"/>
           <mu-bottom-nav-item value="songer" title="歌手" icon="supervisor_account" to="/songer"/>
           <mu-bottom-nav-item value="myself" title="自己" icon="accessibility"/>
@@ -27,32 +27,14 @@
     },
     data () {
       return {
-        bottomNav: '',
         bottomNavColor: this.$route.path.replace('/', '')
       }
     },
     computed: {
       ...mapGetters({
-        playlist: 'player/playlist'
+        playlist: 'player/playlist',
+        bottomNav: 'commoms/topNav'
       })
-    },
-    methods: {
-      handleChange (val) {
-        this.bottomNav = val
-      },
-      InItBottomNav () {
-        const that = this
-        var path = this.$route.path.replace('/', '')
-        var listIndex = path.indexOf('/')
-        if (listIndex > 0) {
-          that.bottomNav = path.substr(0, listIndex)
-        } else {
-          that.bottomNav = path
-        }
-      }
-    },
-    mounted () {
-      this.InItBottomNav()
     }
   }
 </script>

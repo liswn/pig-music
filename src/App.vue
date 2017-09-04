@@ -13,7 +13,7 @@
     <div class="center">
       <router-view></router-view>
     </div>
-    <div :class="{'bottom':(playlist.length>0)}">
+    <div :class="{'bottom':(playlist != null)}">
       <music-player></music-player>
     </div>
   </div>

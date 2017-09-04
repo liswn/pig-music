@@ -15,7 +15,7 @@ const state = {
   // 播放列表
   playlist: songList,
   // 当前歌曲索引
-  currentSongIndex: 0,
+  currentSongIndex: -1,
   currentTimeAuto: true
 }
 

@@ -43,7 +43,7 @@
           </div>
         </transition>
       <!--最小化-->
-      <div v-if="!fullScreen && playlist.length>0" class="mini_Player_container">
+      <div v-if="!fullScreen && currentSong" class="mini_Player_container">
         <div class="mini_music_poster_container" @click="openFullScreen" >
           <img class="mini_music_poster" :class="{'pause': !playing}"  :src="currentSong.poster"/>
         </div>

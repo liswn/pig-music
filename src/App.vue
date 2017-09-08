@@ -27,7 +27,6 @@
     },
     data () {
       return {
-        bottomNavColor: this.$route.path.replace('/', '')
       }
     },
     computed: {

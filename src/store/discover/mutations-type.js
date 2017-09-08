@@ -1,0 +1,1 @@
+export const SET_NEW_SONGS_RANK = 'SET_NEW_SONGS_RANK'

@@ -4,15 +4,21 @@
     </div>
 </template>
 <script>
-  import { mapMutations } from 'vuex'
+  import { mapMutations, mapActions } from 'vuex'
   export default {
     methods: {
       ...mapMutations({
         setTopNav: 'commoms/SET_TOP_NAV'
+      }),
+      ...mapActions({
+        getNewSongsRank: 'discover/getNewSongsRank'
       })
     },
     created () {
       this.setTopNav('discover')
+    },
+    mounted () {
+      this.getNewSongsRank()
     }
   }
 </script>

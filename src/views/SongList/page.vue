@@ -2,11 +2,11 @@
     <div>
       <mu-list>
         <template v-for="(item, index) in songList">
-          <mu-list-item shallowInset>
-            <mu-icon v-show="item.id === currentSong.id" value="volume_up" slot="left" color="#7e57c2" @click="playSong(index)"/>
-            <mu-avatar v-show="item.id !== currentSong.id" color="#999" :style="{'margin-left': '-8px'}" backgroundColor="transparent" slot="leftAvatar" @click="playSong(index)">{{index + 1}}</mu-avatar>
-            <div slot="title" @click="playSong(index)">{{item.name}}</div>
-            <div slot="describe" @click="playSong(index)">{{item.singer}} - {{item.album}}</div>
+          <mu-list-item shallowInset @click="playSong(index)">
+            <mu-icon v-show="item.id === currentSong.id" value="volume_up" slot="left" color="#7e57c2"/>
+            <mu-avatar v-show="item.id !== currentSong.id" color="#999" :style="{'margin-left': '-8px'}" backgroundColor="transparent" slot="leftAvatar">{{index + 1}}</mu-avatar>
+            <div slot="title">{{item.name}}</div>
+            <div slot="describe">{{item.singer}} - {{item.album}}</div>
           </mu-list-item>
         </template>
       </mu-list>

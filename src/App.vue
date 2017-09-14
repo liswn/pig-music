@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="top">
+    <!--<div class="top">
       <div class="top_nav">
         <mu-bottom-nav :value="bottomNav" shift>
           <mu-bottom-nav-item value="discover" title="发现音乐" icon="hearing" to="/" exact/>
@@ -9,7 +9,7 @@
           <mu-bottom-nav-item value="myself" title="自己" icon="accessibility"/>
         </mu-bottom-nav>
       </div>
-    </div>
+    </div>-->
     <div class="center">
       <router-view></router-view>
     </div>

@@ -1,11 +1,11 @@
 export default [
   {
-    path: '/',
+    path: '/discover',
     name: 'discover',
     component: (resolve) => require(['../views/Discover/page.vue'], resolve)
   },
   {
-    path: '/myMusic',
+    path: '/',
     name: 'myMusic',
     component: (resolve) => require(['../views/SongList/page.vue'], resolve)
   },

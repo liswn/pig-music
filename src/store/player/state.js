@@ -14,6 +14,8 @@ const state = {
   mode: playMode.sequence,
   // 播放列表
   playlist: songList,
+  // 音量
+  volume: 0.2,
   // 当前歌曲索引
   currentSongIndex: 0,
   currentTimeAuto: true

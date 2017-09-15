@@ -1,24 +1,24 @@
 <template>
-    <div style="height: 30px;box-sizing: border-box" @click.stop="progressClick">
-      <div ref="barRef" class="progress-bg">
-        <div ref="progressRef" class="progress_played">
-        </div>
-        <div ref="btnRef" class="progress_touch_ball_container"
-             @touchstart.prevent="progressTouchstart"
-             @touchmove.prevent="progressTouchmove"
-             @touchend="progressTouchend"
-        >
-          <div class="progress_touch_ball"></div>
-        </div>
+  <div style="height: 30px;box-sizing: border-box;position: relative;margin: 0 60px 0 90px;z-index: 99999;" @click.stop="progressClick">
+    <mu-icon :value="percent ? 'volume_down': 'volume_mute'" :class="{volumeMute: percent}" class="volume_icon" @click.stop="closeMusic"></mu-icon>
+    <div ref="barRef" class="progress-bg">
+      <div ref="progressRef" class="progress_played" :style="{width: percent * 100 +'%'}" >
+      </div>
+      <div ref="btnRef" class="progress_touch_ball_container"
+           @touchstart.prevent="progressTouchstart"
+           @touchmove.prevent="progressTouchmove"
+           @touchend="progressTouchend"
+           :style="{transform: 'translate3d(' + percent*100 + '%, 0, 0)'}"
+      >
       </div>
     </div>
+  </div>
 </template>
 <script>
   import { mapMutations } from 'vuex'
   const BTN_WIDTH = 0
   export default {
     props: {
-      // 当前播放进度 [0, 1]
       percent: {
         type: Number,
         default: 0
@@ -37,7 +37,7 @@
     },
     methods: {
       ...mapMutations({
-        setCurrentTimeAuto: 'player/SET_CURRENT_TIME_AUTO'
+        setVolume: 'player/SET_VOLUME'
       }),
       // 点击进度条改变播放进度
       progressClick (e) {
@@ -48,15 +48,13 @@
         this._move(offsetWidth)
         this._percentChange()
       },
-      // 拖动小球改变播放进度，小球滑动开始位置
+      // 拖动小球改变声音，小球滑动开始位置
       progressTouchstart (e) {
         this.touch.init = true
         // 开始滑动的位置
         this.touch.startX = e.touches[0].pageX
         // 当前偏移
         this.touch.left = this.$refs.progressRef.clientWidth
-        // 禁止当前播放时间变化
-        this.setCurrentTimeAuto(false)
       },
       // 拖动小球改变播放进度，小球滑动过程中
       progressTouchmove (e) {
@@ -70,13 +68,12 @@
         this._move(offsetWidth)
         let barWidth = this.$refs.barRef.clientWidth
         let progressWidth = this.$refs.progressRef.clientWidth
-        this.$emit('currentTimeChange', progressWidth / barWidth)
+        this.$emit('volumeChange', progressWidth / barWidth)
       },
       // 拖动小球改变播放进度，小球滑动结束
       progressTouchend () {
         this.touch.init = false
         this._percentChange()
-        this.setCurrentTimeAuto(true)
       },
       // 进度条前进 + 小球前进
       _move (offsetWidth) {
@@ -88,7 +85,10 @@
       _percentChange () {
         let barWidth = this.$refs.barRef.clientWidth - BTN_WIDTH
         let newPercent = this.$refs.progressRef.clientWidth / barWidth
-        this.$emit('percentChange', newPercent)
+        this.$emit('volumeChange', newPercent)
+      },
+      closeMusic () {
+        this.$emit('volumeChange', 0)
       }
     },
     created () {
@@ -102,13 +102,25 @@
   {
     position: absolute;
     top: 50%;
-    left: 0;
+    left: 0px;
     transform: translateY(-50%);
     height: 2px;
     width: 100%;
     border-radius: 20px;
     box-sizing: border-box;
-    background-color: rgba(255,255,255,.5);
+    background-color: rgba(255,255,255,.2);
+  }
+  .volume_icon
+  {
+    position: absolute;
+    left: -25px;
+    top: 0;
+    line-height: 30px;
+    color: rgba(255,255,255,.5);
+  }
+  .volumeMute
+  {
+    color: rgba(255,255,255,1);
   }
   .progress_played
   {
@@ -116,7 +128,7 @@
     left: 0;
     top: 0;
     height: 100%;
-    background-color: #7e57c2;
+    background-color: rgba(255,255,255,1);
     border-radius: 20px;
   }
   .progress_touch_ball_container
@@ -126,32 +138,6 @@
     top: 50%;
     margin-top: -20px;
     height: 40px;
-    width: 40px;
-  }
-  .progress_touch_ball
-  {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    height: 20px;
-    width: 20px;
-    border: 1px solid #ddd;
-    background-color: #fff;
-    border-radius: 50%;
-    transform: translate(-50%,-50%);
-  }
-
-  .progress_touch_ball::after
-  {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    display: block;
-    content: '';
-    width: 3px;
-    height: 3px;
-    background-color: #7e57c2;
-    border-radius: 50%;
-    transform: translate(-50%,-50%);
+    width: 100%;
   }
 </style>

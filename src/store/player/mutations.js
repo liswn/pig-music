@@ -12,6 +12,9 @@ const mutations = {
   },
   [types.SET_CURRENT_TIME_AUTO] (state, flag) {
     state.currentTimeAuto = flag
+  },
+  [types.SET_VOLUME] (state, flag) {
+    state.volume = flag
   }
 }
 export default mutations

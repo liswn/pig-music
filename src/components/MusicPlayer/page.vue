@@ -16,6 +16,7 @@
               <div class="music_title_right"></div>
             </div>
             <div class="music_content_container">
+              <music-volume :percent="musicVolume" @volumeChange="volumeChange"></music-volume>
               <div class="music_poster_container play" :class="{'pause': !playing}">
                 <img class="music_poster"  :src="currentSong.poster"/>
               </div>
@@ -73,11 +74,13 @@
   import { mapGetters, mapMutations, mapState } from 'vuex'
   import MySongProgress from '../MySongProgress/page.vue'
   import MyProgressCircle from '../MyProgressCircle/page.vue'
+  import MusicVolume from '../MusicVolume/page.vue'
 
   export default {
     components: {
       MySongProgress,
-      MyProgressCircle
+      MyProgressCircle,
+      MusicVolume
     },
     data () {
       return {
@@ -94,7 +97,8 @@
         currentSong: 'player/currentSong',
         currentSongIndex: 'player/currentSongIndex',
         mode: 'player/mode',
-        currentTimeAuto: 'player/currentTimeAuto'
+        currentTimeAuto: 'player/currentTimeAuto',
+        musicVolume: 'player/volume'
       })
     },
     filters: {
@@ -112,12 +116,14 @@
       ...mapMutations({
         setPlayingState: 'player/SET_PLAYING_STATE',
         setFullScreen: 'player/SET_FULL_SCREEN',
-        setCurrentSongIndex: 'player/SET_CURRENT_SONG_INDEX'
+        setCurrentSongIndex: 'player/SET_CURRENT_SONG_INDEX',
+        setVolume: 'player/SET_VOLUME'
       }),
       loadeddata (e) {
         const that = this
         const audio = that.$refs.audioRef
         that.currentSong.duration = audio.duration
+        audio.volume = this.musicVolume
       },
       timeupdate (e) {
         if (this.currentTimeAuto) {
@@ -177,6 +183,9 @@
       },
       currentTimeChange (newVal) {
         this.currentTime = this.currentSong.duration * newVal
+      },
+      volumeChange (newVal) {
+        this.setVolume(newVal)
       }
     },
     watch: {
@@ -197,6 +206,9 @@
         this.timer = setTimeout(() => {
           this.$refs.audioRef.play()
         }, 1000)
+      },
+      musicVolume (newVal, oldVal) {
+        this.$refs.audioRef.volume = newVal
       }
     }
   }

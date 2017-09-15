@@ -13,3 +13,4 @@ export const mode = (state) => state.mode
 
 export const currentTimeAuto = (state) => state.currentTimeAuto
 
+export const volume = (state) => state.volume

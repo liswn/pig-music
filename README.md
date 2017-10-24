@@ -7,8 +7,8 @@ http://music.liswn.com/
 
 ![](https://github.com/liswn/pig-music/blob/master/static/imgs/0d96d5edeca6e2d6c0e6b0cb7410dd5c.png)
 
-* 演示
 ![](https://github.com/liswn/pig-music/blob/master/static/imgs/demo.gif)
+gif演示效果
 ## 技术栈
 * **Vue2.0**：实现前端页面构建
 * **Vuex**：实现不同组件间的状态共享
